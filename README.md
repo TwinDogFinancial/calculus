@@ -6,3 +6,4 @@ A repo of calculus
 [calculusWithPython](https://github.com/mikexcohen/calculusWithPython)
 [geeksforgeeksCalculusWithPython](https://www.geeksforgeeks.org/python/how-to-do-calculus-with-python/)
 [learn-college-calculus-and-implement-with-python](https://www.freecodecamp.org/news/learn-college-calculus-and-implement-with-python/)
+[SimPy](https://docs.sympy.org/latest/tutorials/intro-tutorial/calculus.html)
