@@ -1,0 +1,47 @@
+
+body {
+  margin: 1em;
+  background-color: #fff;
+}
+th {
+  text-align: left; /* LTR */
+  color: #006;
+  border-bottom: 1px solid #ccc;
+}
+tr.odd {
+  background-color: #ddd;
+}
+tr.even {
+  background-color: #fff;
+}
+td {
+  padding: 5px;
+}
+#menu {
+  visibility: hidden;
+}
+#main {
+  margin: 1em;
+}
+
+/*
+     FILE ARCHIVED ON 21:15:05 Jan 14, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 14:35:28 Nov 08, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.617
+  exclusion.robots: 0.018
+  exclusion.robots.policy: 0.006
+  esindex: 0.01
+  cdx.remote: 13.887
+  LoadShardBlock: 222.201 (3)
+  PetaboxLoader3.resolve: 704.01 (5)
+  PetaboxLoader3.datanode: 404.505 (6)
+  load_resource: 982.543 (2)
+  loaddict: 217.183
+*/
