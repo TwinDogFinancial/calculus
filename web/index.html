@@ -40,12 +40,31 @@
             width: 100% !important;
             height: 100% !important;
         }
+        /* Dropdown for selecting the displayed equation */
+        #equationSelect {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #aaa;
+            padding: 2px 4px;
+            font-size: 0.9rem;
+            z-index: 20;
+        }
     </style>
 </head>
 <body>
     <!-- Live chart showing multiple calculus function graphs -->
     <div id="live-chart-container">
         <canvas id="liveChartCanvas"></canvas>
+        <select id="equationSelect">
+            <option value="0">x²</option>
+            <option value="1">sin(x)</option>
+            <option value="2">cos(x)</option>
+            <option value="3">tan(x)</option>
+            <option value="4">eˣ</option>
+            <option value="5">ln(x)</option>
+        </select>
     </div>
 
     <h1>Welcome to Calculus</h1>
@@ -88,7 +107,7 @@
             <li><strong>Johannes Kepler (1571–1630)</strong> – his laws of planetary motion motivated the need for a systematic study of rates of change.</li>
             <li><strong>Bonaventura Cavalieri (1598–1647)</strong> – developed the principle of indivisibles, a precursor to integral calculus.</li>
             <li><strong>Isaac Barrow (1630–1677)</strong> – proved the fundamental theorem of calculus in a geometric form, directly influencing Newton.</li>
-            <li><strong>Augustin-Louis Cauchy (1789–1857)</strong> – formalized the definition of limits, continuity, and gave rigorous foundations to differentiation and integration.</li>
+            <li><strong>Augustin‑Louis Cauchy (1789–1857)</strong> – formalized the definition of limits, continuity, and gave rigorous foundations to differentiation and integration.</li>
             <li><strong>Karl Weierstrass (1815–1897)</strong> – introduced the ε‑δ definition of limit, removing reliance on infinitesimals and providing a fully rigorous basis.</li>
             <li><strong>Bernhard Riemann (1826–1866)</strong> – created the Riemann integral, extending integration to a broader class of functions.</li>
             <li><strong>Georg Cantor (1845–1918)</strong> – developed set theory and the concept of cardinality, influencing measure theory and modern integration.</li>
