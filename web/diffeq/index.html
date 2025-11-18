@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Differential Equations</title>
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <!-- Chart.js for plotting -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 2rem;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #example-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .example-item {
+            cursor: pointer;
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .example-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .example-item.active {
+            background-color: #d0eaff;
+        }
+
+        #display {
+            border-top: 1px solid #ccc;
+            padding-top: 1rem;
+        }
+
+        .formula {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        #graph-container {
+            margin-top: 2rem;
+            max-width: 800px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 400px !important;
+        }
+
+        /* History section styling */
+        #history {
+            margin-top: 2rem;
+            border-top: 1px solid #ccc;
+            padding-top: 1rem;
+        }
+
+        #history h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        #history p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Differential Equations</h1>
+
+    <div id="example-list">
+        <strong>Select an example:</strong>
+        <select id="exampleSelect"></select>
+    </div>
+
+    <div id="display">
+        <div class="formula" id="ode"></div>
+        <div class="formula" id="solution"></div>
+        <p id="description"></p>
+
+        <!-- New paragraph for detailed explanation -->
+        <p class="formula" id="explanation"></p>
+
+        <div id="graph-container">
+            <canvas id="graphCanvas"></canvas>
+        </div>
+    </div>
+
+    <!-- History of Differential Equations -->
+    <div id="history">
+        <h2>History of Differential Equations</h2>
+        <p>
+            The study of differential equations began in the 17th century with the independent
+            discoveries of Isaac Newton and Gottfried Wilhelm Leibniz. Newton’s work on
+            “fluxions” and Leibniz’s development of the differential notation <code>dy/dx</code>
+            laid the groundwork for modern calculus. Early applications included problems of
+            motion, growth, and decay. Over the centuries, mathematicians such as Euler,
+            Lagrange, and Laplace expanded the theory, leading to the rich field of
+            ordinary and partial differential equations that underpins much of physics,
+            engineering, and applied mathematics today.
+        </p>
+        <p>
+            By the 18th century, the systematic classification of ODEs (linear, separable,
+            exact, homogeneous, etc.) emerged, thanks to the work of mathematicians like
+            Jean le Rond d'Alembert and Joseph-Louis Lagrange. The 19th century saw the
+            introduction of powerful solution techniques such as the method of
+            integrating factors, series solutions, and the theory of Sturm‑Liouville
+            eigenvalue problems. In the 20th century, the rise of functional analysis,
+            numerical methods, and computer algebra systems transformed how we
+            understand and solve differential equations, making them indispensable in
+            modern science and engineering.
+        </p>
+        <p>
+            In the 20th century, the development of chaos theory and nonlinear dynamics
+            highlighted the importance of differential equations in describing complex
+            systems. Pioneers such as Henri Poincaré, Andrey Kolmogorov, and later Stephen
+            Smale expanded the qualitative theory of differential equations, leading to
+            modern applications in physics, biology, economics, and engineering.
+        </p>
+        <p>
+            Computational advances have also played a crucial role. The advent of digital
+            computers enabled large‑scale numerical integration, finite‑difference and
+            finite‑element methods, and sophisticated simulation tools that allow researchers
+            to solve previously intractable differential equations across many scientific
+            domains.
+        </p>
+    </div>
+
+    <script src="diffeq.js"></script>
+</body>
+
+</html>
