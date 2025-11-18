@@ -1,6 +1,6 @@
 /**
  * Differential Equations Explorer
- * ---------------------------
+ * ---------------
  * Shows a list of first‑order ODEs, their general solutions,
  * and plots several solution curves (different integration constants).
  *
@@ -66,6 +66,31 @@ const deExamples = [
         description: "Separate variables: dy/y^{2} = dx → -1/y = x + C → y = -\\frac{1}{x + C}.",
         solFn: C => x => -1 / (x + C),
         // Avoid the singularity at x = -C by choosing constants that keep the plotted range safe
+        constants: [-2, 0, 2]
+    },
+    // New equations added per request
+    {
+        title: "dy/dx = \\tan(x)",
+        ode: "\\frac{dy}{dx} = \\tan(x)",
+        solution: "y = -\\ln|\\cos(x)| + C",
+        description: "Integrate: ∫dy = ∫tan(x)dx → y = -\\ln|\\cos(x)| + C.",
+        solFn: C => x => -Math.log(Math.abs(Math.cos(x))) + C,
+        constants: [-2, 0, 2]
+    },
+    {
+        title: "dy/dx = e^{x}",
+        ode: "\\frac{dy}{dx} = e^{x}",
+        solution: "y = e^{x} + C",
+        description: "Integrate: ∫dy = ∫e^{x}dx → y = e^{x} + C.",
+        solFn: C => x => Math.exp(x) + C,
+        constants: [-2, 0, 2]
+    },
+    {
+        title: "dy/dx = \\ln(x)",
+        ode: "\\frac{dy}{dx} = \\ln(x)",
+        solution: "y = x\\ln(x) - x + C",
+        description: "Integrate by parts: ∫ln(x)dx = x\\ln(x) - x + C.",
+        solFn: C => x => x * Math.log(x) - x + C,
         constants: [-2, 0, 2]
     }
 ];
