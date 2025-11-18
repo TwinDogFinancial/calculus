@@ -50,7 +50,6 @@ const deExamples = [
         solFn: C => x => (x * x * x) / 3 + C,
         constants: [-3, 0, 3]
     },
-    // Additional equations
     {
         title: "dy/dx = \\cos(x)",
         ode: "\\frac{dy}{dx} = \\cos(x)",
@@ -68,7 +67,6 @@ const deExamples = [
         // Avoid the singularity at x = -C by choosing constants that keep the plotted range safe
         constants: [-2, 0, 2]
     },
-    // New equations added per request
     {
         title: "dy/dx = \\tan(x)",
         ode: "\\frac{dy}{dx} = \\tan(x)",
@@ -91,6 +89,47 @@ const deExamples = [
         solution: "y = x\\ln(x) - x + C",
         description: "Integrate by parts: ∫ln(x)dx = x\\ln(x) - x + C.",
         solFn: C => x => x * Math.log(x) - x + C,
+        constants: [-2, 0, 2]
+    },
+    // Additional equations
+    {
+        title: "dy/dx = x^{3}",
+        ode: "\\frac{dy}{dx} = x^{3}",
+        solution: "y = \\frac{x^{4}}{4} + C",
+        description: "Integrate: ∫dy = ∫x^{3}dx → y = x^{4}/4 + C.",
+        solFn: C => x => (x ** 4) / 4 + C,
+        constants: [-2, 0, 2]
+    },
+    {
+        title: "dy/dx = \\frac{1}{x}",
+        ode: "\\frac{dy}{dx} = \\frac{1}{x}",
+        solution: "y = \\ln|x| + C",
+        description: "Integrate: ∫dy = ∫\\frac{1}{x}dx → y = \\ln|x| + C.",
+        solFn: C => x => Math.log(Math.abs(x)) + C,
+        constants: [-2, -1, 1]
+    },
+    {
+        title: "dy/dx = y - x",
+        ode: "\\frac{dy}{dx} = y - x",
+        solution: "y = C\\,e^{x} + x + 1",
+        description: "Linear ODE: dy/dx - y = -x. Solution via integrating factor e^{-x}.",
+        solFn: C => x => C * Math.exp(x) + x + 1,
+        constants: [-2, 0, 2]
+    },
+    {
+        title: "dy/dx = x\\,y^{2}",
+        ode: "\\frac{dy}{dx} = x\\,y^{2}",
+        solution: "y = \\frac{-1}{\\frac{x^{2}}{2} + C}",
+        description: "Separate: dy/y^{2} = x dx → -1/y = x^{2}/2 + C → y = -1/(x^{2}/2 + C).",
+        solFn: C => x => -1 / (0.5 * x * x + C),
+        constants: [-2, 0, 2]
+    },
+    {
+        title: "dy/dx = e^{-x}",
+        ode: "\\frac{dy}{dx} = e^{-x}",
+        solution: "y = -e^{-x} + C",
+        description: "Integrate: ∫dy = ∫e^{-x}dx → y = -e^{-x} + C.",
+        solFn: C => x => -Math.exp(-x) + C,
         constants: [-2, 0, 2]
     }
 ];
