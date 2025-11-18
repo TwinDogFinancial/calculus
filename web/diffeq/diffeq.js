@@ -156,6 +156,18 @@ const deExamples = [
         description: "Integral of 1/(1+x^{2}) is arctan(x).",
         solFn: C => x => Math.atan(x) + C,
         constants: [-2, 0, 2]
+    },
+    // --------------------------------------------------------------
+    // NEW WORD PROBLEM ENTRY
+    // --------------------------------------------------------------
+    {
+        title: "Mixing tank problem",
+        ode: "\\frac{dy}{dt} = -\\frac{3}{100}\\,y",
+        solution: "y = 5\\,e^{-0.03 t} + C",
+        description: "Word problem: A tank initially contains 100 L of water with 5 kg of dissolved salt. Fresh water flows in at 3 L/min and the well‑mixed solution flows out at the same rate. Let y(t) be the amount of salt (kg) at time t (minutes). The rate of change of salt is dy/dt = (inflow rate)·(concentration in) – (outflow rate)·(concentration out) = 0 – (3 L/min)·(y/100 L) = -(3/100) y.\\n\\nSolution steps:\\n1. Write the ODE: dy/dt = -(3/100) y.\\n2. Separate variables: dy/y = -(3/100) dt.\\n3. Integrate: ln|y| = -(3/100) t + C.\\n4. Exponentiate: y = C' e^{-(3/100) t}.\\n5. Use the initial condition y(0)=5 kg to find C' = 5.\\nThus the particular solution is y(t) = 5 e^{-0.03 t}.",
+        // For plotting we treat the independent variable as x (time) and use the particular solution (C = 0)
+        solFn: C => t => 5 * Math.exp(-0.03 * t) + C,
+        constants: [0] // single curve (the particular solution)
     }
 ];
 
