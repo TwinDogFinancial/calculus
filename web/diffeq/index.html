@@ -56,6 +56,21 @@
             width: 100% !important;
             height: 400px !important;
         }
+
+        /* History section styling */
+        #history {
+            margin-top: 2rem;
+            border-top: 1px solid #ccc;
+            padding-top: 1rem;
+        }
+
+        #history h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        #history p {
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
 
@@ -75,6 +90,21 @@
         <div id="graph-container">
             <canvas id="graphCanvas"></canvas>
         </div>
+    </div>
+
+    <!-- History of Differential Equations -->
+    <div id="history">
+        <h2>History of Differential Equations</h2>
+        <p>
+            The study of differential equations began in the 17th century with the independent
+            discoveries of Isaac Newton and Gottfried Wilhelm Leibniz. Newton’s work on
+            “fluxions” and Leibniz’s development of the differential notation <code>dy/dx</code>
+            laid the groundwork for modern calculus. Early applications included problems of
+            motion, growth, and decay. Over the centuries, mathematicians such as Euler,
+            Lagrange, and Laplace expanded the theory, leading to the rich field of
+            ordinary and partial differential equations that underpins much of physics,
+            engineering, and applied mathematics today.
+        </p>
     </div>
 
     <script src="diffeq.js"></script>

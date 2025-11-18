@@ -1,6 +1,6 @@
 /**
  * Differential Equations Explorer
- * ---------------------------------
+ * ---------------------------
  * Shows a list of first‑order ODEs, their general solutions,
  * and plots several solution curves (different integration constants).
  *
@@ -49,6 +49,24 @@ const deExamples = [
         description: "Integrate: ∫dy = ∫x²dx → y = x³/3 + C.",
         solFn: C => x => (x * x * x) / 3 + C,
         constants: [-3, 0, 3]
+    },
+    // Additional equations
+    {
+        title: "dy/dx = \\cos(x)",
+        ode: "\\frac{dy}{dx} = \\cos(x)",
+        solution: "y = \\sin(x) + C",
+        description: "Integrate: ∫dy = ∫cos(x)dx → y = sin(x) + C.",
+        solFn: C => x => Math.sin(x) + C,
+        constants: [-2, 0, 2]
+    },
+    {
+        title: "dy/dx = y^{2}",
+        ode: "\\frac{dy}{dx} = y^{2}",
+        solution: "y = \\frac{-1}{x + C}",
+        description: "Separate variables: dy/y^{2} = dx → -1/y = x + C → y = -\\frac{1}{x + C}.",
+        solFn: C => x => -1 / (x + C),
+        // Avoid the singularity at x = -C by choosing constants that keep the plotted range safe
+        constants: [-2, 0, 2]
     }
 ];
 
