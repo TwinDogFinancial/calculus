@@ -182,7 +182,7 @@ const deExamples = [
         title: "Mixing tank problem",
         ode: "\\frac{dy}{dt} = -\\frac{3}{100}\\,y",
         solution: "y = 5\\,e^{-0.03 t} + C",
-        description: "Word problem: A tank initially contains 100 L of water with 5 kg of dissolved salt. Fresh water flows in at 3 L/min and the well‑mixed solution flows out at the same rate. Let y(t) be the amount of salt (kg) at time t (minutes). The rate of change of salt is dy/dt = (inflow rate)·(concentration in) – (outflow rate)·(concentration out) = 0 – (3 L/min)·(y/100 L) = -(3/100) y.\\n\\nSolution steps:\\n1. Write the ODE: dy/dt = -(3/100) y.\\n2. Separate variables: dy/y = -(3/100) dt.\\n3. Integrate: ln|y| = -(3/100) t + C.\\n4. Exponentiate: y = C' e^{-(3/100) t}.\\n5. Use the initial condition y(0)=5 kg to find C' = 5.\\nThus the particular solution is y(t) = 5 e^{-0.03 t}.",
+        description: "Word problem: A tank initially contains 100 L of water with 5 kg of dissolved salt. Fresh water flows in at 3 L/min and the well‑mixed solution flows out at the same rate. Let y(t) be the amount of salt (kg) at time t (minutes). The rate is proportional to the difference between the amount of salt and the tank volume.\\n\\nSolution steps:\\n1. Write the ODE: dy/dt = -(3/100) y.\\n2. Separate: dy/y = -(3/100) dt.\\n3. Integrate: ln|y| = -(3/100) t + C.\\n4. Exponentiate: y = C' e^{-(3/100) t}.\\n5. Use the initial condition y(0)=5 kg to find C' = 5.\\nThus the particular solution is y(t) = 5 e^{-0.03 t}.",
         explanation: "Separating variables and integrating gives $y=5e^{-0.03t}$ for the given initial condition.",
         // For plotting we treat the independent variable as x (time) and use the particular solution (C = 0)
         solFn: C => t => 5 * Math.exp(-0.03 * t) + C,
@@ -203,10 +203,8 @@ const deExamples = [
 let chartInstance = null;
 
 /**
- * Populate the ***/
-
-
-
+ * Populate the list of examples in the dropdown.
+ */
 function populateList() {
     const selectEl = document.getElementById('exampleSelect');
     // Clear any existing options (in case of re‑initialisation)
@@ -220,13 +218,119 @@ function populateList() {
     // Attach change handler
     selectEl.addEventListener('change', (e) => {
         const idx = parseInt(e.target.value, 10);
-        selectAll?????   
-
-
-
+        // Removed erroneous code that caused a syntax error
         selectExample(idx);
     });
 }
 
 /**
- * Render
+ * Render the selected example: LaTeX formulas, description, and a graph.
+ * @param {number} index - Index of the example in the `deExamples` array.
+ */
+function selectExample(index) {
+    const ex = deExamples[index];
+
+    // Highlight active item
+    document.querySelectorAll('.example-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.index == index);
+    });
+
+    // Fill display area with LaTeX
+    document.getElementById('ode').innerHTML = `\\[ ${ex.ode} \\]`;
+    document.getElementById('solution').innerHTML = `\\[ ${ex.solution} \\]`;
+    document.getElementById('description').textContent = ex.description;
+    document.getElementById('explanation').innerHTML = ex.explanation;
+
+    // Re‑render MathJax
+    if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise();
+    }
+
+    // Draw the graph for this example
+    drawGraph(ex);
+}
+
+/**
+ * Draw a simple graph of the function (and its family of solution curves).
+ * @param {Object} ex - The example object containing `solFn` and `constants`.
+ */
+function drawGraph(ex) {
+    const canvas = document.getElementById('graphCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Define the range and step for x-values
+    const xMin = -5;
+    const xMax = 5;
+    const step = 0.1;
+    const xs = [];
+    const curves = [];
+
+    for (let x = xMin; x <= xMax; x += step) {
+        xs.push(x);
+    }
+
+    // Generate y-values for each constant
+    ex.constants.forEach(C => {
+        const ys = xs.map(x => {
+            try {
+                const y = ex.solFn(C)(x);
+                return Number.isFinite(y) ? y : null;
+            } catch (e) {
+                return null;
+            }
+        });
+        curves.push({ C, xs, ys });
+    });
+
+    // Prepare Chart.js datasets
+    const datasets = curves.map((curve, i) => ({
+        label: `C = ${curve.C}`,
+        data: curve.ys,
+        borderColor: `hsl(${i * 60}, 70%, 50%)`,
+        backgroundColor: `hsla(${i * 60}, 70%, 50%, 0.2)`,
+        fill: false,
+        tension: 0.1,
+        pointRadius: 0
+    }));
+
+    const data = {
+        labels: xs.map(v => v.toFixed(2)),
+        datasets: datasets
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    title: { display: true, text: 'x' }
+                },
+                y: {
+                    title: { display: true, text: 'y' }
+                }
+            },
+            plugins: {
+                legend: { position: 'top' },
+                tooltip: { mode: 'index', intersect: false }
+            }
+        }
+    };
+
+    // If a chart already exists, destroy it before creating a new one
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+    chartInstance = new Chart(ctx, config);
+}
+
+// Initialise page
+document.addEventListener('DOMContentLoaded', () => {
+    populateList();
+    // Optionally select the first example by default
+    if (deExamples.length > 0) {
+        selectExample(0);
+    }
+});
