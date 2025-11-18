@@ -8,6 +8,7 @@
             font-family: Arial, Helvetica, sans-serif;
             margin: 2rem;
             line-height: 1.6;
+            position: relative; /* for absolute positioning of the live chart */
         }
         h1 {
             text-align: center;
@@ -22,9 +23,31 @@
         a:hover {
             text-decoration: underline;
         }
+        /* Live chart container positioned at the top‑right */
+        #live-chart-container {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 320px;
+            height: 240px;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        #liveChartCanvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
     </style>
 </head>
 <body>
+    <!-- Live chart showing multiple calculus function graphs -->
+    <div id="live-chart-container">
+        <canvas id="liveChartCanvas"></canvas>
+    </div>
+
     <h1>Welcome to Calculus</h1>
     <p>Calculus is the mathematical study of change. It has two fundamental branches:</p>
     <ul>
@@ -74,6 +97,10 @@
         <p>These contributions, together with the original insights of Newton and Leibniz, form the rich tapestry of calculus as it is taught and applied today.</p>
     </div>
 
+    <!-- Chart.js library for the live chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Live chart script -->
+    <script src="liveChart.js"></script>
     <script src="index.js"></script>
 </body>
 </html>
