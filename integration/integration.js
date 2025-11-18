@@ -44,7 +44,7 @@ const integrationExamples = [
     {
         title: "Partial Fractions – \\(\\int \\frac{1}{x^{2}-1}\\,dx\\)",
         integral: "\\int \\frac{1}{x^{2}-1}\\,dx",
-        solution: \"\\frac{1}{2}\\ln\\left|\\frac{x-1}{x+1}\\right| + C\",
+        solution: "\\frac{1}{2}\\ln\\left|\\frac{x-1}{x+1}\\right| + C",
         description: "Decompose \\(\\frac{1}{x^{2}-1}=\\frac{1}{2}\\left(\\frac{1}{x-1}-\\frac{1}{x+1}\\right)\\)."
     }
 ];
