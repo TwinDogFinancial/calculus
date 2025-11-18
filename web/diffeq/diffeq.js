@@ -168,6 +168,17 @@ const deExamples = [
         // For plotting we treat the independent variable as x (time) and use the particular solution (C = 0)
         solFn: C => t => 5 * Math.exp(-0.03 * t) + C,
         constants: [0] // single curve (the particular solution)
+    },
+    // ------ NEW WORD PROBLEM: Newton's Law of Cooling ------
+    {
+        title: "Newton's law of cooling",
+        ode: "\\frac{dy}{dt} = -k\\,(y - T_{\\text{env}})",
+        solution: "y(t) = T_{\\text{env}} + C\\,e^{-k t}",
+        description: "Word problem: An object with temperature y(t) cools toward ambient temperature T_{\\text{env}}. The rate of change is proportional to the difference between the object's temperature and the environment.\\n\\nSolution steps:\\n1. Write ODE: dy/dt = -k (y - T_{\\text{env}}).\\n2. Separate variables: dy/(y - T_{\\text{env}}) = -k dt.\\n3. Integrate: \\ln|y - T_{\\text{env}}| = -k t + C'.\\n4. Exponentiate: y - T_{\\text{env}} = C e^{-k t}.\\n5. Solve for y: y(t) = T_{\\text{env}} + C e^{-k t}.\\n6. Use an initial condition (e.g., y(0)=80°C, T_{\\text{env}}=20°C) to find C = 60°C.",
+        // For plotting we use k = 0.07 (per minute) and ambient temperature 20°C.
+        // The constant C represents (y₀ - T_env). Here we plot the case y₀ = 80°C → C = 60.
+        solFn: C => t => 20 + C * Math.exp(-0.07 * t),
+        constants: [60] // example constant for an initial temperature of 80°C
     }
 ];
 
