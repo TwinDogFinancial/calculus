@@ -131,6 +131,31 @@ const deExamples = [
         description: "Integrate: ∫dy = ∫e^{-x}dx → y = -e^{-x} + C.",
         solFn: C => x => -Math.exp(-x) + C,
         constants: [-2, 0, 2]
+    },
+    // New equations added for richer exploration
+    {
+        title: "dy/dx = \\sin(x) + \\cos(x)",
+        ode: "\\frac{dy}{dx} = \\sin(x) + \\cos(x)",
+        solution: "y = -\\cos(x) + \\sin(x) + C",
+        description: "Integrate term‑wise: ∫sin(x)dx = -cos(x), ∫cos(x)dx = sin(x).",
+        solFn: C => x => -Math.cos(x) + Math.sin(x) + C,
+        constants: [-2, 0, 2]
+    },
+    {
+        title: "dy/dx = x^{2} + 1",
+        ode: "\\frac{dy}{dx} = x^{2} + 1",
+        solution: "y = \\frac{x^{3}}{3} + x + C",
+        description: "Integrate: ∫(x^{2}+1)dx = x^{3}/3 + x + C.",
+        solFn: C => x => (x ** 3) / 3 + x + C,
+        constants: [-2, 0, 2]
+    },
+    {
+        title: "dy/dx = \\frac{1}{1+x^{2}}",
+        ode: "\\frac{dy}{dx} = \\frac{1}{1+x^{2}}",
+        solution: "y = \\arctan(x) + C",
+        description: "Integral of 1/(1+x^{2}) is arctan(x).",
+        solFn: C => x => Math.atan(x) + C,
+        constants: [-2, 0, 2]
     }
 ];
 
