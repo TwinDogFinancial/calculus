@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Differentiation Examples</title>
+    <!-- MathJax for rendering LaTeX -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <!-- Chart.js for plotting graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 2rem;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+        }
+        #example-list {
+            margin-bottom: 1.5rem;
+        }
+        .example-item {
+            cursor: pointer;
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+        }
+        .example-item:hover {
+            background-color: #f0f0f0;
+        }
+        .example-item.active {
+            background-color: #d0eaff;
+        }
+        #display {
+            border-top: 1px solid #ccc;
+            padding-top: 1rem;
+        }
+        .formula {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        #graph-container {
+            margin-top: 2rem;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Differentiation in Calculus</h1>
+
+    <div id="example-list">
+        <strong>Select an example:</strong>
+        <ul id="list"></ul>
+    </div>
+
+    <div id="display">
+        <div class="formula" id="original"></div>
+        <div class="formula" id="derivative"></div>
+        <p id="description"></p>
+
+        <div id="graph-container">
+            <canvas id="graphCanvas"></canvas>
+        </div>
+    </div>
+
+    <script src="differentiation.js"></script>
+</body>
+</html>

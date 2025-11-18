@@ -1,0 +1,9 @@
+services:
+  calculus:
+    image: nginx:alpine
+    container_name: calculus
+    restart: unless-stopped
+    ports:
+      - "${NAME_GENERATOR_PORT:-8181}:80"
+    volumes:
+      - "./web:/usr/share/nginx/html:ro"
