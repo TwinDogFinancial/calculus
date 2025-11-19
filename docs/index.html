@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculus Introduction</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 2rem;
+            line-height: 1.6;
+            position: relative;
+            /* for absolute positioning of the live chart */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .section {
+            margin-top: 2rem;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Live chart container positioned at the top‑right */
+        #live-chart-container {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 320px;
+            height: 240px;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        #liveChartCanvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Dropdown for selecting the displayed equation */
+        #equationSelect {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #aaa;
+            padding: 2px 4px;
+            font-size: 0.9rem;
+            z-index: 20;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Live chart showing multiple calculus function graphs -->
+    <div id="live-chart-container">
+        <canvas id="liveChartCanvas"></canvas>
+        <select id="equationSelect">
+            <option value="0">x²</option>
+            <option value="1">sin(x)</option>
+            <option value="2">cos(x)</option>
+            <option value="3">tan(x)</option>
+            <option value="4">eˣ</option>
+            <option value="5">ln(x)</option>
+        </select>
+    </div>
+
+    <h1>Welcome to Calculus</h1>
+    <p>Calculus is the mathematical study of change. It has two fundamental branches:</p>
+    <ul>
+        <li><strong>Differentiation</strong> – deals with rates of change and slopes of curves.</li>
+        <li><strong>Integration</strong> – deals with accumulation of quantities and areas under curves.</li>
+    </ul>
+
+    <div class="section">
+        <h2>Explore</h2>
+        <p>Click the links below to see interactive examples:</p>
+        <ul>
+            <li><a href="differentiation/index.html">Differentiation Examples</a></li>
+            <li><a href="integration/index.html">Integration Examples</a></li>
+            <li><a href="diffeq/index.html">Differential Equations</a></li>
+            <li><a href="calculator/index.html">Graphing Scientific Calculator</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>History</h2>
+        <p>
+            <strong>Gottfried Wilhelm Leibniz (1646–1716)</strong> independently discovered calculus in the late 17th
+            century, around the same time as Isaac Newton.
+            Leibniz introduced the integral sign “∫” (derived from the Latin word “summa”) and the differential notation
+            “dx”, which have become the standard symbols used worldwide.
+            His work on the fundamental theorem of calculus linked differentiation and integration, laying the
+            groundwork for modern analysis.
+            The famous priority dispute between Leibniz and Newton sparked intense debate, but today both are credited
+            with the invention of calculus.
+        </p>
+        <p>
+            <strong>Sir Isaac Newton (1642–1727)</strong> developed his own formulation of calculus, which he called the
+            “method of fluxions”.
+            Newton’s approach focused on rates of change (fluxions) and the accumulation of quantities (fluents), and he
+            applied these ideas to solve problems in physics, such as planetary motion and the law of universal
+            gravitation.
+            Although Newton did not publish his calculus until later, his work laid the foundation for the analytical
+            mechanics that would dominate the scientific revolution.
+            Together with Leibniz’s notation, Newton’s concepts form the dual heritage of modern calculus.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Foundations and Further Developments</h2>
+        <p>Beyond the pioneering work of Newton and Leibniz, many mathematicians contributed essential ideas that shaped
+            modern calculus:</p>
+        <ul>
+            <li><strong>Archimedes (c. 287–212 BC)</strong> – used the method of exhaustion, an early form of limits, to
+                find areas and volumes.</li>
+            <li><strong>Johannes Kepler (1571–1630)</strong> – his laws of planetary motion motivated the need for a
+                systematic study of rates of change.</li>
+            <li><strong>Bonaventura Cavalieri (1598–1647)</strong> – developed the principle of indivisibles, a
+                precursor to integral calculus.</li>
+            <li><strong>Isaac Barrow (1630–1677)</strong> – proved the fundamental theorem of calculus in a geometric
+                form, directly influencing Newton.</li>
+            <li><strong>Augustin‑Louis Cauchy (1789–1857)</strong> – formalized the definition of limits, continuity,
+                and gave rigorous foundations to differentiation and integration.</li>
+            <li><strong>Karl Weierstrass (1815–1897)</strong> – introduced the ε‑δ definition of limit, removing
+                reliance on infinitesimals and providing a fully rigorous basis.</li>
+            <li><strong>Bernhard Riemann (1826–1866)</strong> – created the Riemann integral, extending integration to a
+                broader class of functions.</li>
+            <li><strong>Georg Cantor (1845–1918)</strong> – developed set theory and the concept of cardinality,
+                influencing measure theory and modern integration.</li>
+            <li><strong>Henri Lebesgue (1875–1941)</strong> – introduced Lebesgue integration, further generalizing the
+                integral and linking it with measure theory.</li>
+        </ul>
+        <p>These contributions, together with the original insights of Newton and Leibniz, form the rich tapestry of
+            calculus as it is taught and applied today.</p>
+    </div>
+
+    <!-- Chart.js library for the live chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Live chart script -->
+    <script src="liveChart.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
